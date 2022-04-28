@@ -29,21 +29,21 @@ const Cerosel = () => {
   <div className="carousel-inner relative w-full overflow-hidden">
     <div className="carousel-item active float-left w-full">
       <img
-        src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp"
+        src="https://cdn.mos.cms.futurecdn.net/6t8Zh249QiFmVnkQdCCtHK.jpg"
         className="block w-full"
         alt="Wild Landscape"
       />
     </div>
     <div className="carousel-item float-left w-full">
       <img
-        src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp"
+        src="https://img.republicworld.com/republic-prod/stories/promolarge/xhdpi/c20gqydyxbbt0jo0_1593062345.jpeg"
         className="block w-full"
         alt="Camera"
       />
     </div>
     <div className="carousel-item float-left w-full">
       <img
-        src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp"
+        src="https://cdn.mos.cms.futurecdn.net/bwcE9CwvUuDvp99XcBywwm.jpeg"
         className="block w-full"
         alt="Exotic Fruits"
       />

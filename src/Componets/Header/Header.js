@@ -1,8 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import auth from '../../firebase.int';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import header from "../../img/header.png"
+import { signOut } from 'firebase/auth';
 
 const Header = () => {
+    const [user] = useAuthState(auth)
+    const SingOut =()=>{
+        signOut(auth)
+    }
     return (
         <header>
             <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6">
@@ -31,7 +38,8 @@ const Header = () => {
                         </Link>
                     </div>
                     <div>
-                        <Link to="/login" className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Login</Link>
+                       { user? <Link to="/" onClick={SingOut}>Logout</Link> : <Link to="/login" className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Login</Link>
+                       }
                     </div>
                 </div>
             </nav>
