@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
     const handleSingup =e=>{
@@ -98,6 +99,9 @@ const Register = () => {
       transition
       duration-150
       ease-in-out">Sign up</button>
+      <p>
+          You have already Account? <Link className="text-blue-500 text-xl my-5" to="/login">Please Login</Link>
+      </p>
   </form>
 </div>
         </div>

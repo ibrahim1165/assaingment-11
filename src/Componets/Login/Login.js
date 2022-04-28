@@ -70,8 +70,8 @@ const Login = () => {
             active:bg-blue-800 active:shadow-lg
             transition
             duration-150
-            ease-in-out">Sign in</button>
-                <p className="text-gray-800 mt-6 text-center">Not a member? <Link to="/register"
+            ease-in-out">Login</button>
+                <p className="text-gray-800 mt-6 text-center">Create New Account? <Link to="/register"
                     className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out">Register</Link>
                 </p>
             </form>
