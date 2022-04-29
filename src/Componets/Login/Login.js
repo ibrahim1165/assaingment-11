@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import auth from '../../firebase.int';
 import 'react-toastify/dist/ReactToastify.css';
+import { sendPasswordResetEmail } from 'firebase/auth';
 const Login = () => {
     const [userInfo, setUserInfo] = useState({
         email: "",
@@ -15,6 +16,9 @@ const Login = () => {
         password: "",
         general: "",
     })
+    const [sendPasswordResetEmail, sending, error] = useSendPasswordResetEmail(
+        auth
+      );
     const [signInWithEmail, user, loading, hookError] = useSignInWithEmailAndPassword(auth);
     const [signInWithGoogle, googleUser, loading2, googleError] = useSignInWithGoogle(auth);
     const HandleEmail =e=>{
@@ -116,7 +120,12 @@ const Login = () => {
                             id="exampleCheck2" />
                         <label className="form-check-label inline-block text-gray-800" for="exampleCheck2">Remember me</label>
                     </div>
-                    <Link to=""
+                    <Link to="" onClick={
+                         async () => {
+                            await sendPasswordResetEmail(userInfo.email);
+                            toast('Sent email');
+                          }
+                    }
                         className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out">Forgot
                         password?</Link>
                 </div>
