@@ -6,7 +6,6 @@ import Header from './Componets/Header/Header';
 import Home from './Componets/Home/Home';
 import Login from './Componets/Login/Login';
 import Register from './Componets/Register/Register';
-
 function App() {
   return (
     <div>

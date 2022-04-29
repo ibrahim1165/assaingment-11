@@ -1,10 +1,73 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import auth from '../../firebase.int';
+import 'react-toastify/dist/ReactToastify.css';
 const Login = () => {
-    const handleLogibn =e=>{
-     
+    const [userInfo, setUserInfo] = useState({
+        email: "",
+        password: "",
+    })
+    const [errors, setErrors] = useState({
+        email: "",
+        password: "",
+        general: "",
+    })
+    const [signInWithEmail, user, loading, hookError] = useSignInWithEmailAndPassword(auth);
+    const [signInWithGoogle, googleUser, loading2, googleError] = useSignInWithGoogle(auth);
+    const HandleEmail =e=>{
+        const emailRegex = /\S+@\S+\.\S+/;
+        const validEmail = emailRegex.test(e.target.value);
+        if(validEmail){
+            setUserInfo({...userInfo,email:e.target.value})
+            setErrors({...errors, email: ""}) 
+        }else{
+            setErrors({ ...errors, email: "invalid email" })
+            setUserInfo({ ...userInfo, email: "" })
+        }
+    };
+        const handlePassword=e=>{
+            const passwordRegex = /.{6,}/;
+            const validPassword = passwordRegex.test(e.target.value);
+            if(validPassword){
+                setUserInfo({...userInfo, password:e.target.value})
+                setErrors({...errors, password: ""});
+            }else{
+                setErrors({...errors, password:"minimum 6 Character"})
+                setUserInfo({...userInfo,password:""})
+            }
+        }
+    const handleLogibn = e =>{
+        e.preventDefault();
+        signInWithEmail(userInfo.email, userInfo.password)
     }
+    const navigate= useNavigate()
+    const location = useLocation()
+    const form =location.state?.form.pathname || "/";
+    useEffect(()=>{
+        if(user){
+            navigate(form)
+        }
+    },[user])
+    useEffect(()=>{
+        const error =hookError || googleError;
+        if(error){
+            switch(error?.code){   
+                case "auth/invalid-email":
+                    toast("Invalid email provided, please provide a valid email");
+                    break;
+                    case "auth/auth/invalid-password":
+                        toast("wrong password provided, please provide a valid password")
+                        break;
+                        default:
+                            toast("Something went wrong")
+            }
+           
+
+        }
+    },[hookError, googleError])
     return (
         <div className="block p-6 rounded-lg shadow-lg max-w-sm mx-auto my-2 py-8 mb-16 mt-6 ">
             <form onSubmit={handleLogibn}>
@@ -25,7 +88,7 @@ const Login = () => {
               ease-in-out
               m-0
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInputEmail2"
-                        aria-describedby="emailHelp" placeholder="Enter email" />
+                        aria-describedby="emailHelp" placeholder="Enter email" onBlur={HandleEmail} />
                 </div>
                 <div className="form-group mb-6">
                     <label for="exampleInputPassword2" className="form-label inline-block mb-2 text-gray-700">Password</label>
@@ -43,7 +106,8 @@ const Login = () => {
               ease-in-out
               m-0
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInputPassword2"
-                        placeholder="Password" />
+                        placeholder="Password" onBlur={handlePassword} />
+                        {errors?.password && <p className="text-red-600">{errors.password}</p> }
                 </div>
                 <div className="flex justify-between items-center mb-6">
                     <div className="form-group form-check">
@@ -52,9 +116,9 @@ const Login = () => {
                             id="exampleCheck2" />
                         <label className="form-check-label inline-block text-gray-800" for="exampleCheck2">Remember me</label>
                     </div>
-                    <a href="#!"
+                    <Link to=""
                         className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out">Forgot
-                        password?</a>
+                        password?</Link>
                 </div>
                 <button type="submit" className="
             w-full
@@ -78,6 +142,7 @@ const Login = () => {
                     className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out">Register</Link>
                 </p>
             </form>
+            <ToastContainer />
         </div>
     );
 };

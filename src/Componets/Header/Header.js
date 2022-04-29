@@ -2,9 +2,16 @@ import React, { useState } from 'react';
 import { Transition } from "@headlessui/react";
 import { Link } from 'react-router-dom';
 import header from '../../img/header.png'
+import { signOut } from 'firebase/auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.int';
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [user] = useAuthState(auth);
+    const singout =()=>{
+        signOut(auth)
+    }
     return (
         <div>
             <div>
@@ -61,8 +68,10 @@ const Header = () => {
                                 </div>
                                 
                             </div>
-                            <Link to="/login" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white
-                    hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Login</Link>
+                           <div className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white
+                    hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">
+                           {user?<Link onClick={singout} to="">Logout</Link> :<Link to="/login" >Login</Link>}
+                           </div>
                             <div className="-mr-2 flex md:hidden">
                                 <button
                                     onClick={() => setIsOpen(!isOpen)}
