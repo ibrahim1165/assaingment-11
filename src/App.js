@@ -10,7 +10,7 @@ import Register from './Componets/Register/Register';
 function App() {
   return (
     <div>
-      <Header></Header>
+     <Header></Header>
       <Routes>
         <Route path='/' element={<Home />} ></Route>
         <Route path='/home' element={<Home />} ></Route>
