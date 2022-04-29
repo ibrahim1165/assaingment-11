@@ -1,11 +1,12 @@
 import React from 'react';
+import HomeDattils from '../HomeDettils/HomeDattils';
 import Cerosel from './Cerosel';
 
 const Home = () => {
     return (
         <div>
             <Cerosel></Cerosel>
-           <h2>This is Home</h2> 
+           <HomeDattils></HomeDattils>
         </div>
     );
 };

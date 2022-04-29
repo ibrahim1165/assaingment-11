@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 const Login = () => {
     const handleLogibn =e=>{
-        console.log('login');
+     
     }
     return (
-        <div className="block p-6 rounded-lg shadow-lg bg-white max-w-sm mx-auto my-2 py-8 mb-16 mt-6">
+        <div className="block p-6 rounded-lg shadow-lg max-w-sm mx-auto my-2 py-8 mb-16 mt-6 ">
             <form onSubmit={handleLogibn}>
                 <div className="form-group mb-6">
                     <label for="exampleInputEmail2" className="form-label inline-block mb-2 text-gray-700">Email address</label>
