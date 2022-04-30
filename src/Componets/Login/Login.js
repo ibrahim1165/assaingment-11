@@ -123,8 +123,8 @@ const Login = () => {
                     <Link to="" onClick={
                          async () => {
                             await sendPasswordResetEmail(userInfo.email);
-                            toast('Sent email');
-                          }
+                            toast('Sent email')
+                        }
                     }
                         className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out">Forgot
                         password?</Link>

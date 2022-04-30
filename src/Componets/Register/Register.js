@@ -85,7 +85,7 @@ const ConfrimhandlePassword =e=>{
 
   return (
     <div>
-      <div className="block p-6 rounded-lg shadow-lg bg-white max-w-md mx-auto py-12 mt-2 mb-8">
+      <div className="block p-6 rounded-lg shadow-lg bg-white max-w-md mx-auto py-12 mt-8 mb-8 ">
         <form onSubmit={handleSingup}>
           <div className="form-group mb-6">
             <input type="email" className="form-control block
