@@ -6,6 +6,7 @@ import Footer from './Componets/Footer/Footer';
 import Header from './Componets/Header/Header';
 import Home from './Componets/Home/Home';
 import Login from './Componets/Login/Login';
+import Managinv from './Componets/Managinv/Managinv';
 import Register from './Componets/Register/Register';
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} ></Route>
         <Route path='/home' element={<Home />} ></Route>
+        <Route path='/inventory' element={<Managinv />} ></Route>
         <Route path='/login' element={<Login />} ></Route>
         <Route path='/blog' element={<Blog />} ></Route>
         <Route path='/register' element={<Register />} ></Route>
