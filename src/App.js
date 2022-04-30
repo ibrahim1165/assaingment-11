@@ -8,6 +8,9 @@ import Home from './Componets/Home/Home';
 import Login from './Componets/Login/Login';
 import Managinv from './Componets/Managinv/Managinv';
 import Register from './Componets/Register/Register';
+import Additem from './Componets/Additem/Additem';
+import NotFound from './Componets/NotFound/NotFound';
+import RequirAuth from './Componets/RequirAuth/RequirAuth';
 function App() {
   return (
     <div>
@@ -15,10 +18,18 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} ></Route>
         <Route path='/home' element={<Home />} ></Route>
-        <Route path='/inventory' element={<Managinv />} ></Route>
+        <Route path='/inventory' element={
+            <Managinv />
+        } ></Route>
         <Route path='/login' element={<Login />} ></Route>
         <Route path='/blog' element={<Blog />} ></Route>
+        <Route path='/additem' element={
+          <RequirAuth>
+            <Additem></Additem>
+          </RequirAuth>
+        }></Route>
         <Route path='/register' element={<Register />} ></Route>
+       <Route path='*'element={<NotFound></NotFound>}></Route>
       </Routes>
   <Footer></Footer>
     </div>

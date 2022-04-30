@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import auth from '../../firebase.int';
 import 'react-toastify/dist/ReactToastify.css';
 import { sendPasswordResetEmail } from 'firebase/auth';
+import Loading from '../Loading/Loading';
 const Login = () => {
     const [userInfo, setUserInfo] = useState({
         email: "",
@@ -43,16 +44,17 @@ const Login = () => {
                 setUserInfo({...userInfo,password:""})
             }
         }
+        
     const handleLogibn = e =>{
         e.preventDefault();
         signInWithEmail(userInfo.email, userInfo.password)
     }
     const navigate= useNavigate()
     const location = useLocation()
-    const form =location.state?.form.pathname || "/";
+    const form = location.state?.form?.pathname || "/";
     useEffect(()=>{
         if(user){
-            navigate(form)
+            navigate(form,{ replace: true }) 
         }
     },[user])
     useEffect(()=>{
