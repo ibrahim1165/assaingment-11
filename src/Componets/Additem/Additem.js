@@ -21,8 +21,8 @@ const Additem = () => {
     }
     return (
         <div className="">
-            <h2 className="text-center m-4 d-block text-2xl text-bold ">Please add a service</h2>
-            <div class="block p-6 rounded-lg shadow-lg bg-white max-w-md mx-auto m-12">
+            <h2 className="text-center m-4 mt-4 d-block text-2xl text-bold ">Please add a Product</h2>
+            <div class="bg-red-300 block p-6 rounded-lg shadow-lg bg-white max-w-md mx-auto m-12">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div class="form-group mb-6">
                         <input type="text" class="form-control block
@@ -131,8 +131,8 @@ const Additem = () => {
                     </div>
                     <div class="form-group form-check text-center mb-6">
                     </div>
-                   <Link to="/inventory">
-                   <button type="submit" class="
+                 
+                 <input type="submit"  class="
                                      w-full
                                     px-6
                                     py-2.5
@@ -149,10 +149,7 @@ const Additem = () => {
                                     active:bg-blue-800 active:shadow-lg
                                     transition
                                     duration-150
-                                    ease-in-out">
-                                        Add
-                                    </button>
-                   </Link>
+                                    ease-in-out" value="Add" />
                 </form>
             </div>
 

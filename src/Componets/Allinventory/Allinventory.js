@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link,} from 'react-router-dom';
+
 
 const Allinventory = ({ product,DeleteBtn}) => {
-    const { name,quenty, price, Discreption, supplire, img } = product
+    const { name,quenty, price, Discreption, supplire, img } = product;
     return (
         <div>
              <div class="flex justify-center mx-auto">
