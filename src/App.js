@@ -11,6 +11,7 @@ import Register from './Componets/Register/Register';
 import Additem from './Componets/Additem/Additem';
 import NotFound from './Componets/NotFound/NotFound';
 import RequirAuth from './Componets/RequirAuth/RequirAuth';
+import Update from './Componets/Update/Update';
 function App() {
   return (
     <div>
@@ -18,16 +19,16 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} ></Route>
         <Route path='/home' element={<Home />} ></Route>
-        <Route path='/inventory' element={
-            <Managinv />
+        <Route path='/inventory' element={<Managinv />
         } ></Route>
         <Route path='/login' element={<Login />} ></Route>
-        <Route path='/blog' element={<Blog />} ></Route>
+        <Route path='/blog' element={<Blog />}></Route>
         <Route path='/additem' element={
           <RequirAuth>
             <Additem></Additem>
           </RequirAuth>
         }></Route>
+        <Route path='/uptate/:id' element={<Update></Update>}></Route>
         <Route path='/register' element={<Register />} ></Route>
        <Route path='*'element={<NotFound></NotFound>}></Route>
       </Routes>

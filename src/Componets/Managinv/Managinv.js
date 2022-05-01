@@ -1,13 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import Allinventory from '../Allinventory/Allinventory';
+import useProduct from '../Useproduct/Useproduct';
+
 
 const Managinv = () => {
-    const [products,setproducts] = useState([]);
-    useEffect(() => {
-        fetch('http://localhost:5000/product')
-        .then((response) =>response.json())
-        .then(data=>setproducts(data))
-    },[])
+    const [products,setproducts] = useProduct();
+    const DeleteBtn=(id)=>{
+        const proceed =window.confirm('Are you sure you want to delete')
+        if(proceed){
+            const url = `http://localhost:5000/product/${id}`
+            fetch(url,{ 
+                method: 'DELETE', 
+            })
+            .then(res=>res.json())
+            .then(data =>{
+            })
+            const remaing = products.filter(product => product._id!==id) 
+            setproducts(remaing)
+        }
+    }
     return (
         <div>
             <div className="text-center text-2xl text-bold-400 m-4 " >All Leptop</div>
@@ -16,7 +27,8 @@ const Managinv = () => {
                     products.map(product =><Allinventory
                     key={product.id}
                     product={product}
-                    
+                    DeleteBtn={DeleteBtn}
+                  
                     ></Allinventory>)
                 }
             </div>
