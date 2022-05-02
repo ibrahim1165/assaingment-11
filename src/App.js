@@ -12,6 +12,7 @@ import Additem from './Componets/Additem/Additem';
 import NotFound from './Componets/NotFound/NotFound';
 import RequirAuth from './Componets/RequirAuth/RequirAuth';
 import Update from './Componets/Update/Update';
+import Myitem from './Componets/Myitem/Myitem';
 function App() {
   return (
     <div>
@@ -32,7 +33,16 @@ function App() {
             <Additem></Additem>
           </RequirAuth>
         }></Route>
-        <Route path='/uptate/:id' element={<Update></Update>}></Route>
+        <Route path='/uptate/:id' element={
+          <RequirAuth>
+            <Update></Update>
+          </RequirAuth>
+        }></Route>
+        <Route path='/myitem' element={
+          <RequirAuth>
+           <Myitem></Myitem>
+          </RequirAuth>
+        }></Route>
         <Route path='/register' element={<Register />} ></Route>
        <Route path='*'element={<NotFound></NotFound>}></Route>
       </Routes>

@@ -58,16 +58,10 @@ const Header = () => {
                                         >
                                            Add Item
                                         </Link>
+                                        <Link to="/myitem" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                        My Item</Link>
                                             </>
-                                        }
-
-                                        <Link
-                                            to=""
-                                            className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                                        >
-                                            Reports
-                                        </Link> 
-                                        
+                                        }             
                                     </div>   
                                     
                                 </div>
@@ -165,15 +159,10 @@ const Header = () => {
                                         >
                                            Add Item
                                         </Link>
+                                        <Link to="/myitem" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                        My Item</Link>
                                             </>
                                         }
-
-                                    <Link
-                                        to="#"
-                                        className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                                    >
-                                        Reports
-                                    </Link>
                                     <div className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white
                     hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">
                            {user?<Link onClick={singout} to="">Logout</Link> :<Link to="/login" >Login</Link>}
