@@ -4,32 +4,36 @@ import { useParams } from 'react-router-dom';
 
 const Update = () => {
     const { id } = useParams()
-    const [user, setuser] = useState({})
-    const [quantity, setquantity] = useState(1)
+    const [user,setuser] = useState(id)
     const { register} = useForm();
 
-    const handleSubmit = e => {
-        const quantity = quantity++;
-        e.preventDefault();
-        const updateUser ={quantity};
+    const handleDelevir= ()=>{
+        const { quentity } = user;
+      let newQuentity = parseFloat(quentity - 1);
+        const newProduct = {...user,quentity: newQuentity};
+        setuser(newProduct)
         const url = `http://localhost:5000/product${id}`
         fetch(url, {
             method: 'PUT',
             headers: {
                 'content-type':'application/json'
             },
-            body: JSON.stringify(updateUser),
+            body: JSON.stringify(newQuentity),
         })
             .then(res => res.json())
             .then(data => {
-                console.log('succec',data);
-                e.target.reset()
-                alert('quanty added')
+                console.log(data?.newQuentity);
+                alert('update Quentity')
             })
+            
     }
-    const hansleDelevir = type =>{
-        
-        };
+    const handleSubmit=e=>{
+        e.preventDefault()
+        const { quentity } = user;
+       let newQuentity = parseFloat(quentity+1);
+          const newProduct = {...user,quentity: newQuentity};
+          setuser(newProduct)
+    }
     useEffect(() => {
         const url = `http://localhost:5000/product/${id}`
         fetch(url)
@@ -48,11 +52,11 @@ const Update = () => {
                         <p className="text-gray-700 text-base mb-4">
                             Discreption: {user.Discreption}
                         </p>
-                        <p className="text-gray-600 text-xs">Quantity: {user.quenty}</p>
+                        <p className="text-gray-600 text-xs">Quantity: {user.quentity}</p>
                         <p className="text-gray-600 text-xs">supplire: {user.supplire}</p>
                         <div>
                             <div className="flex space-x-2 justify-center">
-                                <button onClick={hansleDelevir}
+                                <button onClick={handleDelevir}
                                     type="button"
                                     data-mdb-ripple="true"
                                     data-mdb-ripple-color="light"
@@ -60,7 +64,7 @@ const Update = () => {
                                 >Deliver</button>
                             </div>
                             <div>
-                                <form onSubmit={handleSubmit} className="form-group mb-6 mt-6 w-48 mx-auto">
+                                <form className="form-group mb-6 mt-6 w-48 mx-auto">
                                     <div className="form-group mb-6">
                                         <input type="number" className="form-control block
         w-full
@@ -75,9 +79,9 @@ const Update = () => {
         transition
         ease-in-out
         m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="quenty" {...register("quenty")} />
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="quentity" {...register("quentity")} />
                                     </div>
-                                    <input type="submit" className="
+                                    <input onClick={handleSubmit} type="submit" className="
                                      w-full
                                     px-6
                                     py-2.5

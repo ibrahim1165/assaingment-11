@@ -3,7 +3,7 @@ import { Link,} from 'react-router-dom';
 
 
 const Allinventory = ({ product,DeleteBtn}) => {
-    const { name,quenty, price, Discreption, supplire, img } = product;
+    const { name,quentity, price, Discreption, supplire, img } = product;
     return (
         <div>
              <div className="flex justify-center mx-auto">
@@ -14,7 +14,7 @@ const Allinventory = ({ product,DeleteBtn}) => {
                     <div className="p-6">
                         <h5 className="text-gray-900 text-xl font-medium mb-2">Name:{name}</h5>
                         <p><small>Price:${price}</small></p>
-                        <p>Quantity:{quenty}</p>
+                        <p>Quantity:{quentity}</p>
                         <p className="text-gray-700 text-base mb-4">Discreption: {Discreption}
                         </p>
                         <p className="m-2">supplire: {supplire}</p>

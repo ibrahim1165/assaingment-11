@@ -5,7 +5,7 @@ import useProduct from '../Useproduct/Useproduct';
 
 
 const Managinv = () => {
-    const [products,setproducts] = useProduct();
+    const [products,setproducts] = useProduct([]);
     const DeleteBtn=(id)=>{
         const proceed =window.confirm('Are you sure you want to delete')
         if(proceed){

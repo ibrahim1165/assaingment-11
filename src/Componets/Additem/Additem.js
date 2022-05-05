@@ -85,7 +85,7 @@ const Additem = () => {
         transition
         ease-in-out
         m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="quenty" {...register("quenty")} />
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="quenty" {...register("quentity")} />
                     </div>
                     <div className="form-group mb-6">
                         <input type="Name" className="form-control block
