@@ -5,8 +5,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import auth from '../../firebase.int';
 import 'react-toastify/dist/ReactToastify.css';
-import { sendPasswordResetEmail } from 'firebase/auth';
-import Loading from '../Loading/Loading';
 const Login = () => {
     const [userInfo, setUserInfo] = useState({
         email: "",
@@ -19,61 +17,61 @@ const Login = () => {
     })
     const [sendPasswordResetEmail, sending, error] = useSendPasswordResetEmail(
         auth
-      );
+    );
     const [signInWithEmail, user, loading, hookError] = useSignInWithEmailAndPassword(auth);
-    const [signInWithGoogle, googleUser, loading2, googleError] = useSignInWithGoogle(auth);
-    const HandleEmail =e=>{
+    const [signInWithGoogle, user2, loading2, googleError] = useSignInWithGoogle(auth);
+    const HandleEmail = e => {
         const emailRegex = /\S+@\S+\.\S+/;
         const validEmail = emailRegex.test(e.target.value);
-        if(validEmail){
-            setUserInfo({...userInfo,email:e.target.value})
-            setErrors({...errors, email: ""}) 
-        }else{
+        if (validEmail) {
+            setUserInfo({ ...userInfo, email: e.target.value })
+            setErrors({ ...errors, email: "" })
+        } else {
             setErrors({ ...errors, email: "invalid email" })
             setUserInfo({ ...userInfo, email: "" })
         }
     };
-        const handlePassword=e=>{
-            const passwordRegex = /.{6,}/;
-            const validPassword = passwordRegex.test(e.target.value);
-            if(validPassword){
-                setUserInfo({...userInfo, password:e.target.value})
-                setErrors({...errors, password: ""});
-            }else{
-                setErrors({...errors, password:"minimum 6 Character"})
-                setUserInfo({...userInfo,password:""})
-            }
+    const handlePassword = e => {
+        const passwordRegex = /.{6,}/;
+        const validPassword = passwordRegex.test(e.target.value);
+        if (validPassword) {
+            setUserInfo({ ...userInfo, password: e.target.value })
+            setErrors({ ...errors, password: "" });
+        } else {
+            setErrors({ ...errors, password: "minimum 6 Character" })
+            setUserInfo({ ...userInfo, password: "" })
         }
-        
-    const handleLogibn = e =>{
+    }
+   
+    const handleLogibn = e => {
         e.preventDefault();
         signInWithEmail(userInfo.email, userInfo.password)
     }
-    const navigate= useNavigate()
+    const navigate = useNavigate()
     const location = useLocation()
     const form = location.state?.form?.pathname || "/";
-    useEffect(()=>{
-        if(user){
-            navigate(form,{ replace: true }) 
+    useEffect(() => {
+        if (user || user2){
+            navigate(form, { replace: true })
         }
-    },[user])
-    useEffect(()=>{
-        const error =hookError || googleError;
-        if(error){
-            switch(error?.code){   
+    }, [user,user2])
+    useEffect(() => {
+        const error = hookError || googleError;
+        if (error) {
+            switch (error?.code) {
                 case "auth/invalid-email":
                     toast("Invalid email provided, please provide a valid email");
                     break;
-                    case "auth/auth/invalid-password":
-                        toast("wrong password provided, please provide a valid password")
-                        break;
-                        default:
-                            toast("Something went wrong")
+                case "auth/auth/invalid-password":
+                    toast("wrong password provided, please provide a valid password")
+                    break;
+                default:
+                    toast("Something went wrong")
             }
-           
+
 
         }
-    },[hookError, googleError])
+    }, [hookError, googleError])
     return (
         <div className="block p-6 rounded-lg shadow-lg max-w-sm mx-auto my-2 py-8 mb-16 mt-6 ">
             <form onSubmit={handleLogibn}>
@@ -113,7 +111,7 @@ const Login = () => {
               m-0
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInputPassword2"
                         placeholder="Password" onBlur={handlePassword} />
-                        {errors?.password && <p className="text-red-600">{errors.password}</p> }
+                    {errors?.password && <p className="text-red-600">{errors.password}</p>}
                 </div>
                 <div className="flex justify-between items-center mb-6">
                     <div className="form-group form-check">
@@ -123,7 +121,7 @@ const Login = () => {
                         <label className="form-check-label inline-block text-gray-800" for="exampleCheck2">Remember me</label>
                     </div>
                     <Link to="" onClick={
-                         async () => {
+                        async () => {
                             await sendPasswordResetEmail(userInfo.email);
                             toast('Sent email')
                         }
@@ -152,6 +150,14 @@ const Login = () => {
                 <p className="text-gray-800 mt-6 text-center">Create New Account? <Link to="/register"
                     className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out">Register</Link>
                 </p>
+                <div className="text-center mt-4">
+                <button onClick={() => signInWithGoogle()} type="button"className="w-3/4 mx-1 p-2 font-bold
+                 text-white
+        bg-red-600 rounded 
+        focus:outline-none
+         font-12 hover:bg-red-800"
+        >Google</button>
+                </div>
             </form>
             <ToastContainer />
         </div>

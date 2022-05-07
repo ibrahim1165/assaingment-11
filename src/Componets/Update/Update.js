@@ -7,22 +7,26 @@ const Update = () => {
     const [user,setuser] = useState(id)
     const { register} = useForm();
 
-    const handleDelevir= ()=>{
-        const { quentity } = user;
-      let newQuentity = parseFloat(quentity - 1);
-        const newProduct = {...user,quentity: newQuentity};
-        setuser(newProduct)
+    const handleDelevir = ()=>{
+        const {quentity } = user;
+            if(quentity>=1){
+                let newQuantity = parseFloat(quentity - 1);
+                const newProduct = {...user,quentity: newQuantity};
+                setuser(newProduct)
+            }else{
+                alert("Invalid")
+            }
         const url = `http://localhost:5000/product${id}`
         fetch(url, {
             method: 'PUT',
             headers: {
                 'content-type':'application/json'
             },
-            body: JSON.stringify(newQuentity),
+            body: JSON.stringify(),
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data?.newQuentity);
+                console.log(data?.newQuantity);
                 alert('update Quentity')
             })
             
