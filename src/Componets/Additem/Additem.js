@@ -1,10 +1,15 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import auth from '../../firebase.int';
 
 const Additem = () => {
     const { register, handleSubmit } = useForm();
+    const [user] = useAuthState(auth);
     const onSubmit = data => {
-        const url = `http://localhost:5000/product`
+        const email = user.email;
+
+        const url = `http://localhost:5000/product?/email${email}`
         fetch(url, {
             method: 'POST',
             headers: {
