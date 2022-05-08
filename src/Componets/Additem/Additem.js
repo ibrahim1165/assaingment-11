@@ -7,9 +7,10 @@ const Additem = () => {
     const { register, handleSubmit } = useForm();
     const [user] = useAuthState(auth);
     const onSubmit = data => {
-        const email = user.email;
-
-        const url = `http://localhost:5000/product?/email${email}`
+        const added ={
+            email:user.email
+        }
+        const url = `https://fierce-dawn-80523.herokuapp.com/product?/${added}`
         fetch(url, {
             method: 'POST',
             headers: {
@@ -20,6 +21,7 @@ const Additem = () => {
             .then(res => res.json())
             .then(result => {
                 console.log(result);
+
             })
     }
     return (

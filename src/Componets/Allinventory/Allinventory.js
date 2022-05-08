@@ -1,8 +1,11 @@
 import React from 'react';
-import { Link,} from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { Link} from 'react-router-dom';
+import auth from '../../firebase.int';
 
 
 const Allinventory = ({ product,DeleteBtn}) => {
+    const [user] = useAuthState(auth);
     const { name,quentity, price, Discreption, supplire, img,_id } = product;
     return (
         <div>

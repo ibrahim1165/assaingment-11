@@ -7,6 +7,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 In the project directory, you can run:
 
 ### `npm start`
+# My Laptop Wherehouse.
+- first of all top Headers.
+- second banner .
+- third header section.
+- some Product Show In my Home Page.
+- Login page Register Page .
+- Inventory page.
+- Add item page and My item Page.
+ - This my laptop wherehouse website.
+
+ # My Laptop Warehouse Website Link (https://laptop-warehouse-f81ef.web.app/)
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
