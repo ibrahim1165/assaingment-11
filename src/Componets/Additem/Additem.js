@@ -10,7 +10,7 @@ const Additem = () => {
         const added ={
             email:user.email
         }
-        const url = `https://fierce-dawn-80523.herokuapp.com/product?/${added}`
+        const url = `https://assaingment-11-server-.up.railway.app/product?/${added}`
         fetch(url, {
             method: 'POST',
             headers: {
@@ -21,6 +21,7 @@ const Additem = () => {
             .then(res => res.json())
             .then(result => {
                 console.log(result);
+                result.restore();
 
             })
     }

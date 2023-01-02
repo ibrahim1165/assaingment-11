@@ -6,13 +6,18 @@ const Myitem = () => {
    const [item , setitem] =useState([]);
    const [user] = useAuthState(auth);
    useEffect(()=>{
-       const email = user.email;
-        const url= `https://fierce-dawn-80523.herokuapp.com/product?email=${email}`;
-     fetch(url)
-     .then(res=>res.json())
-     .then(data=>setitem(data))
+//    const email = user.email;
+//   const url =`https://assaingment-11-server-.up.railway.app/product/${email}`
+//   fetch(url,{
+//       method: 'GET',
+//   })
+//   .then(res=>res.json())
+//   .then(data =>{
+//       console.log(data)
+//   })
+
   
-   },[])
+   },[user])
     return (
         <div>
            {item.map(items=> <div>

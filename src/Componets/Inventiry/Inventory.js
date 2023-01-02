@@ -5,7 +5,7 @@ import Homeinventory from '../Homeinven/Homeinventory';
 const Inventory = () => {
     const [products , setproducts] = useState([]);
     useEffect(()=>{
-        fetch('https://fierce-dawn-80523.herokuapp.com/product')
+        fetch('https://assaingment-11-server-.up.railway.app/product')
         .then(res=>res.json())
        .then(data => setproducts(data))
     },[])
