@@ -9,7 +9,7 @@ const Managinv = () => {
     const DeleteBtn=(id)=>{
         const proceed =window.confirm('Are you sure you want to delete')
         if(proceed){
-            const url = `https://assaingment-11-server-.up.railway.app/product/${id}`
+            const url = `https://leptop-house.onrender.com/product/${id}`
             fetch(url,{ 
                 method: 'DELETE', 
             })

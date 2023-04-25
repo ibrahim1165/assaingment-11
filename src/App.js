@@ -50,5 +50,5 @@ function App() {
     </div>
   );
 }
-// https://assaingment-11-server-.up.railway.app/
+// https://leptop-house.onrender.com/
 export default App;

@@ -16,7 +16,7 @@ const Update = () => {
             }else{
                 alert("Invalid")
             }
-        const url = `https://assaingment-11-server-.up.railway.app/product${id}`
+        const url = `https://leptop-house.onrender.com/product${id}`
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -39,7 +39,7 @@ const Update = () => {
           setuser(newProduct)
     }
     useEffect(() => {
-        const url = `https://assaingment-11-server-.up.railway.app/product/${id}`
+        const url = `https://leptop-house.onrender.com/product/${id}`
         fetch(url)
             .then(res => res.json())
             .then(data =>

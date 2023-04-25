@@ -7,7 +7,7 @@ const Myitem = () => {
    const [user] = useAuthState(auth);
    useEffect(()=>{
 //    const email = user.email;
-//   const url =`https://assaingment-11-server-.up.railway.app/product/${email}`
+//   const url =`https://leptop-house.onrender.com/product/${email}`
 //   fetch(url,{
 //       method: 'GET',
 //   })

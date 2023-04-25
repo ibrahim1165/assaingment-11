@@ -10,7 +10,7 @@ const Additem = () => {
         const added ={
             email:user.email
         }
-        const url = `https://assaingment-11-server-.up.railway.app/product?/${added}`
+        const url = `https://leptop-house.onrender.com/product?/${added}`
         fetch(url, {
             method: 'POST',
             headers: {
